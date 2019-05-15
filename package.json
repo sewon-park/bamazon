@@ -1,0 +1,23 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Displays itmes for sale to customers and fullill the order if the stock quantity is enough",
+  "main": "bamazon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sewon-park/bamazon.git"
+  },
+  "author": "sewon park",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sewon-park/bamazon/issues"
+  },
+  "homepage": "https://github.com/sewon-park/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "mysql": "^2.17.1"
+  }
+}
