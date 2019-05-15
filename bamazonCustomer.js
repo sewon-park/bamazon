@@ -62,10 +62,11 @@ function placeOrder() {
   ]).then(function (inquirerResponse) {
     console.log(inquirerResponse);
     var order = parseFloat(inquirerResponse.order_quantity);
-
-    //read stock_quantity
+    var item = inquirerResponse.item_id
     console.log("checking the inventory for the Item ID " + inquirerResponse.item_id + "\n");
-    connection.query("SELECT stock_quantity FROM products WHERE ? ", { item_id: inquirerResponse.item_id }, function (err, res) {
+
+  //read stock_quantity from products mysql data table
+    connection.query("SELECT stock_quantity FROM products WHERE ? ", { item_id: item }, function (err, res) {
       if (err) { console.log(err) };
       console.log("current quantity in stock: " + res[0].stock_quantity);
       var stock = res[0].stock_quantity;
@@ -99,7 +100,8 @@ function checkQuantity(order, stock) {
 
 function updateStock() {
   connection.query("UPDATE products SET ? WHERE ?", [{ item_id: inquirerResponse.item_id },{stock_quantity:newStock}], function (err, res) {
-    if (err) { console.log(err) };var newStock = stock - order;
+    if (err) { console.log(err) };
+    var newStock = stock - order;
  
       console.log(res.affectedRows + " stock updated!\n");
       displayItems();
