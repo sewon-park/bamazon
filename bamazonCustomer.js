@@ -19,7 +19,7 @@ connection.connect(function (err) {
   if (err) { console.log(err) };
   console.log("connected as id " + connection.threadId + "\n");
   ;
-  displayItems();
+  runApp();
 
 });
 //Display all the items available for sale
@@ -115,7 +115,39 @@ function updateStock(newStock, item) {
     
   );
   console.log(query.sql);
-  displayItems();
+
+  runApp();
 }
+
+function runApp(){
+  inquirer.prompt([
+    {
+      name: "action",
+      type: "list",
+      message: "what would you like to do",
+      choices:[
+        "Buy something",
+        "Exit"
+      ]
+    }
+  ])
+    .then(function (answer) {
+
+      switch (answer.action) {
+        case "Buy something":
+          displayItems();
+          break;
+
+        case "Exit":
+        connection.end();
+        break;
+      }
+
+    })
+}
+
+
+
+
   
 
