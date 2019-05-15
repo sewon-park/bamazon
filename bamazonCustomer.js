@@ -31,11 +31,11 @@ function displayItems() {
   connection.query(query, function (err, res) {
     if (err) throw err;
     for (var i = 0; i < res.length; i++) {
-      console.log("Item_ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Department: " + res[i].department_name + " || Price: $" + res[i].price + " || Stock Quantity: " + res[i].stock_quantity);
+      console.log("Item_ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Department: " + res[i].department_name + " || Price: $" + res[i].price + " || Stock Quantity: " + res[i].stock_quantity + " || Sales: " + res[i].sales );
     }
-    placeOrder()
+  
   })
-
+  placeOrder()
 }
 
 
@@ -66,13 +66,17 @@ function placeOrder() {
     console.log("checking the inventory for the Item ID " + inquirerResponse.item_id + "|| order qunatity: "+ order + "\n");
 
   //read stock_quantity from products mysql data table
-    connection.query("SELECT stock_quantity FROM products WHERE ? ", { item_id: item }, function (err, res) {
+    var query = "SELECT stock_quantity, price FROM products WHERE ? "
+    connection.query(query, { item_id: item }, function (err, res) {
       if (err) { console.log(err) };
       // console.log("current quantity in stock: " + res[0].stock_quantity);
-      var stock = res[0].stock_quantity;
+      var stock = parseFloat(res[0].stock_quantity);
+      var price = parseFloat(res[0].price);
+      var addSales = order * price;
+      console.log(addSales);
       // console.log(stock - order);
      
-      checkQuantity(order, stock, item);
+      checkQuantity(order, stock, item, addSales);
 
     });
 
@@ -80,7 +84,7 @@ function placeOrder() {
 }
 
 
-function checkQuantity(order, stock, item) {
+function checkQuantity(order, stock, item, addSales) {
   if (order > stock) {
     console.log("Insufficient stock. we currently have only " + stock + " in stock");
     placeOrder();
@@ -92,7 +96,7 @@ function checkQuantity(order, stock, item) {
     var newStock = stock - order;
     // console.log(newStock);
     updateStock(newStock, item);
-
+    updateSales(addSales, item);
   }
 }
 
@@ -115,8 +119,22 @@ function updateStock(newStock, item) {
     
   );
   console.log(query.sql);
+  
 
-  runApp();
+  
+}
+
+function updateSales(addSales, item){
+  var query =connection.query( 
+    "UPDATE products SET sales = sales +? WHERE ? ",
+  [addSales, {item_id: item}], function(err, res){
+    if (err) {console.log(err)};
+    console.log(query.sql)
+    displayUpdate();
+    // runApp();
+  })
+  
+
 }
 
 function runApp(){
@@ -146,6 +164,20 @@ function runApp(){
     })
 }
 
+
+
+function displayUpdate() {
+  var query = 'SELECT * FROM products'
+  connection.query(query, function (err, res) {
+    if (err) throw err;
+    for (var i = 0; i < res.length; i++) {
+    console.log("Item_ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Department: " + res[i].department_name + " || Price: $" + res[i].price + " || Stock Quantity: " + res[i].stock_quantity + " || Sales: " + res[i].sales);
+    }  
+  })
+   
+  }
+
+  
 
 
 
