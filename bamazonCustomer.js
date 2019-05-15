@@ -63,16 +63,16 @@ function placeOrder() {
     console.log(inquirerResponse);
     var order = parseFloat(inquirerResponse.order_quantity);
     var item = inquirerResponse.item_id
-    console.log("checking the inventory for the Item ID " + inquirerResponse.item_id + "\n");
+    console.log("checking the inventory for the Item ID " + inquirerResponse.item_id + "|| order qunatity: "+ order + "\n");
 
   //read stock_quantity from products mysql data table
     connection.query("SELECT stock_quantity FROM products WHERE ? ", { item_id: item }, function (err, res) {
       if (err) { console.log(err) };
-      console.log("current quantity in stock: " + res[0].stock_quantity);
+      // console.log("current quantity in stock: " + res[0].stock_quantity);
       var stock = res[0].stock_quantity;
-      console.log(stock - order);
-      // console.log(stock);
-      checkQuantity(order, stock);
+      // console.log(stock - order);
+     
+      checkQuantity(order, stock, item);
 
     });
 
@@ -80,9 +80,9 @@ function placeOrder() {
 }
 
 
-function checkQuantity(order, stock) {
+function checkQuantity(order, stock, item) {
   if (order > stock) {
-    console.log("Insufficient stock. we currently have only " + order + " in stock");
+    console.log("Insufficient stock. we currently have only " + stock + " in stock");
     placeOrder();
   }
 
@@ -90,22 +90,32 @@ function checkQuantity(order, stock) {
     console.log("Your order has been successfully placed");
 
     var newStock = stock - order;
-    console.log(newStock);
-    updateStock(newStock);
+    // console.log(newStock);
+    updateStock(newStock, item);
 
   }
 }
 
-
-
-function updateStock() {
-  connection.query("UPDATE products SET ? WHERE ?", [{ item_id: inquirerResponse.item_id },{stock_quantity:newStock}], function (err, res) {
-    if (err) { console.log(err) };
-    var newStock = stock - order;
- 
-      console.log(res.affectedRows + " stock updated!\n");
-      displayItems();
-
+function updateStock(newStock, item) {
+  
+  var query = connection.query(
+    "UPDATE products SET ? WHERE ?",
+    [
+      {
+        stock_quantity: newStock
+      },
+      {
+        item_id: item
+      }
+    ],
+    function(err, res) {
+      console.log(res.affectedRows + " products updated!\n");
+      
     }
-  )
+    
+  );
+  console.log(query.sql);
+  displayItems();
 }
+  
+
