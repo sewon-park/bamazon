@@ -8,10 +8,11 @@ To retrieve the data that will power this app, you'll need to install below pack
 npm install spotify
 
 ## Customer
+When the app launches (node bamazonCustomer.js), it will ask user what they would like to do ("buy something", "exit").
 
 ### Display items available for sale
-When the app launches (node bamazonCustomer.js), it will ask user what they would like to do ("buy something", "exi").
-When user chooses "buy something", the app will show the available item information including Item ID, Product Name. Department, Price, Stock Quantity and ask for the item id and order quantity.
+
+If you choose "buy something", the app will show the available item information including Item ID, Product Name. Department, Price, Stock Quantity and ask for the item id and order quantity.
 
 <img src ="images/customer-displayitem.PNG" width="700"> 
 
@@ -31,5 +32,33 @@ The app will ask if you would like to place a new order.
 <img src ="images/customer-order_stockupdate.PNG" width="700"> 
 
 
-## Demo Video
+### Demo Video
 https://drive.google.com/file/d/1V82pg5DfQKWHi7sKu_-cup60Q8_DzIrD/view?usp=sharing
+
+## Manager
+When the app launches, it will ask user what they would like to do
+* View products for sale
+* View low inventory
+* Add to inventory
+* Add new product
+* Exit
+### Display items available for sale
+When View products for sale is selected, the app will show the available item information including Item ID, Product Name. Department, Price, Stock Quantity
+
+<img src ="images/manager-product.PNG" width="700"> 
+
+### View low inventory
+When View low inventory is selected, the app will show the available item information with inventory fewer than 5. 
+
+<img src ="images/manager-lowInventory.PNG" width="700"> 
+
+### Add to inventory
+When Add to inventory is selected, the app will ask for the Item ID that you would like to add inventory to and the quanity. Once you provide the input, the app will update the product's Stock Quantity.
+
+<img src ="images/manager-addInventory.PNG" width="700"> 
+
+### Add new product
+When Add to inventory is selected, the app will ask for the Item ID, Product Name, Department, Price, and Stock Quantity of the new product that you would like to add. Once you provide the input, the app will update the products data table with new product information.
+
+<img src ="images/manager-addProduct.PNG" width="700"> 
+
