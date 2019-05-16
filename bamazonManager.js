@@ -91,9 +91,9 @@ function displayLowInventory() {
     
     for (var i = 0; i < res.length; i++) {
     console.log("Item_ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Department: " + res[i].department_name + " || Price: $" + res[i].price + " || Stock Quantity: " + res[i].stock_quantity);}
-   
+    menuOptions()
   })
-   
+  
     
   }
 
@@ -114,7 +114,9 @@ function addInventory(){
         "7",
         "8",
         "9",
-        "10"
+        "10",
+        "11",
+        "12"
       ]
     },
     {
