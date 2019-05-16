@@ -23,10 +23,12 @@ After you provide the Item ID, you will be asked again to provide the quantity y
 After you provide the quantity, the app will check if the order can be fulfilled based on the current stock available.
 If the order quantity is bigger than the stock available, then the order will not be placed, and you will be asked to place a new order.
 If the order quantity is equal or smaller than the available stock, the order will be placed.
+<img src ="images/customer-order.PNG" width="700"> 
 
 ### Update Inventory
 After the order is successfully placed, the Stock Quantity for the item you purchased will be updated. 
 The app will ask if you would like to place a new order.
+<img src ="images/customer-order_stockupdate.PNG" width="700"> 
 
 
 ## Demo Video
