@@ -12,7 +12,9 @@ npm install spotify
 ### Display items available for sale
 When the app launches (node bamazonCustomer.js), it will ask user what they would like to do ("buy something", "exi").
 When user chooses "buy something", the app will show the available item information including Item ID, Product Name. Department, Price, Stock Quantity and ask for the item id and order quantity.
+
 <img src ="images/customer-displayitem.PNG" width="700"> 
+
 ### Place an order
 You will be asked to provide the Item ID of the product you would like to purchase. 
 After you provide the Item ID, you will be asked again to provide the quantity you would like to purchase.
