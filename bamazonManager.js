@@ -75,9 +75,9 @@ function displayItems() {
     if (err) {console.log(err)};
     for (var i = 0; i < res.length; i++) {
     console.log("\nItem_ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Department: " + res[i].department_name + " || Price: $" + res[i].price + " || Stock Quantity: " + res[i].stock_quantity);
-    }
-    menuOptions();
-    
+   
+  }
+  menuOptions();
   })
   
 
@@ -91,7 +91,10 @@ function displayLowInventory() {
     
     for (var i = 0; i < res.length; i++) {
     console.log("Item_ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Department: " + res[i].department_name + " || Price: $" + res[i].price + " || Stock Quantity: " + res[i].stock_quantity);}
-    })
+   
+  })
+   
+    
   }
 
 
@@ -132,11 +135,14 @@ function addInventory(){
   
   connection.query(query, [addQuantity, {item_id: addItem}],function (err, res) {
     if (err) {console.log(err)};
-    console.log(addQuantity +" units of "+ addItem + " was sucessfully added" );
+    console.log(addQuantity +" units of Item ID "+ addItem + " was sucessfully added" );
     displayItems();
+    // menuOptions();
+    
     
     })
 })
+
 }
 
 function addNewProduct(){
@@ -187,7 +193,10 @@ function addNewProduct(){
     connection.query(query, [newItemId, newProductName, newProductDept, newProductPrice, newProductStock],function (err, res) {
       if (err) {console.log(err)};
       displayItems();
+      // menuOptions();
+     
       })
     })
+    
   }
 
