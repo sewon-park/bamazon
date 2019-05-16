@@ -73,7 +73,7 @@ function placeOrder() {
       var stock = parseFloat(res[0].stock_quantity);
       var price = parseFloat(res[0].price);
       var addSales = order * price;
-      console.log(addSales);
+      // console.log(addSales);
       // console.log(stock - order);
      
       checkQuantity(order, stock, item, addSales);
@@ -174,6 +174,7 @@ function displayUpdate() {
     console.log("Item_ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Department: " + res[i].department_name + " || Price: $" + res[i].price + " || Stock Quantity: " + res[i].stock_quantity + " || Sales: " + res[i].sales);
     }  
   })
+  runApp();
    
   }
 

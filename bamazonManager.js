@@ -74,10 +74,12 @@ function displayItems() {
   connection.query(query, function (err, res) {
     if (err) {console.log(err)};
     for (var i = 0; i < res.length; i++) {
-    console.log("Item_ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Department: " + res[i].department_name + " || Price: $" + res[i].price + " || Stock Quantity: " + res[i].stock_quantity);
+    console.log("\nItem_ID: " + res[i].item_id + " || Product Name: " + res[i].product_name + " || Department: " + res[i].department_name + " || Price: $" + res[i].price + " || Stock Quantity: " + res[i].stock_quantity);
     }
+    menuOptions();
     
   })
+  
 
 }
 
@@ -132,6 +134,7 @@ function addInventory(){
     if (err) {console.log(err)};
     console.log(addQuantity +" units of "+ addItem + " was sucessfully added" );
     displayItems();
+    
     })
 })
 }
