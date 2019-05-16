@@ -62,3 +62,5 @@ When Add to inventory is selected, the app will ask for the Item ID, Product Nam
 
 <img src ="images/manager_addProduct.PNG" width="700"> 
 
+### Demo Video
+https://drive.google.com/file/d/1uGckD9zKZqfpPIi1RZgJfrrRiVnWX4ZJ/view?usp=sharing
