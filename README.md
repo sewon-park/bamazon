@@ -45,20 +45,20 @@ When the app launches, it will ask user what they would like to do
 ### Display items available for sale
 When View products for sale is selected, the app will show the available item information including Item ID, Product Name. Department, Price, Stock Quantity
 
-<img src ="images/manager-product.PNG" width="700"> 
+<img src ="images/manager_product.PNG" width="700"> 
 
 ### View low inventory
 When View low inventory is selected, the app will show the available item information with inventory fewer than 5. 
 
-<img src ="images/manager-lowInventory.PNG" width="700"> 
+<img src ="images/manager_lowInventory.PNG" width="700"> 
 
 ### Add to inventory
 When Add to inventory is selected, the app will ask for the Item ID that you would like to add inventory to and the quanity. Once you provide the input, the app will update the product's Stock Quantity.
 
-<img src ="images/manager-addInventory.PNG" width="700"> 
+<img src ="images/manager_addInventory.PNG" width="700"> 
 
 ### Add new product
 When Add to inventory is selected, the app will ask for the Item ID, Product Name, Department, Price, and Stock Quantity of the new product that you would like to add. Once you provide the input, the app will update the products data table with new product information.
 
-<img src ="images/manager-addProduct.PNG" width="700"> 
+<img src ="images/manager_addProduct.PNG" width="700"> 
 
